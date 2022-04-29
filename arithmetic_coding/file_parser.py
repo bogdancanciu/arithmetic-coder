@@ -36,5 +36,8 @@ class FileWriter:
     def __write_byte(self):
         #write_byte method is meant to write a single byte to the output file(encoded file)
         self.__output_file.write(self.__bit_buffer.to_bytes(1,'big'))
+    def done_outputing(self):
+        self.__bit_buffer >>= self.__bits_to_go
+        self.__write_byte()
     def __del__(self):
         self.__output_file.close()
